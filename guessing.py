@@ -26,9 +26,13 @@ def portfolio_page():
 
     st.markdown("<h3 style='text-align:left; color:slateblue; font-weight:bold;'> DO YOU LIKE TO TRY MY GUESSING GAME</h3>", unsafe_allow_html=True)
     if st.button("YES"):
-        st.session_state['test'] = 1
+        if st.button("guessing game by you"):
+            st.session_state['test'] = 1
+        elif st.button("guessing game by machine"):
+            st.session_state['test'] = 2
+
     elif st.button("NO"):
-        st.session_state['test'] = 2
+        st.session_state['test'] = 3
 
 def guessing_game_user():
     st.markdown("<h3 style='text-align:left; color:slateblue; font-weight:bold;'> CHOOSE A WAY YOU'D LIKE TO PLAY MY GUESSING GAME</h3>", unsafe_allow_html=True)
