@@ -5,7 +5,7 @@ import streamlit as st
 def portfolio_page():
     st.markdown("<h1 style='text-align:center; color:indigo; font-weight:bold;'>PORTFOLIO</h1>", unsafe_allow_html=True)
     
-    image = Image.open(r"C:\Users\aruna\Downloads\IMG_20241031_113601_647.webp")
+    image = Image.open(r"IMG_20241031_113601_647.webp")
     image = image.resize((200, 200))
     col1, col2 = st.columns([3, 1])
 
@@ -20,7 +20,7 @@ def portfolio_page():
         reuse("NAME", "ARUNAW RISHE M")
         reuse("PROFESSIONAL", "STUDENT & DEVELOPER")
         reuse("INTEREST", "JAVA DEVELOPER")
-        reuse("GITHUB ACCOUNT", "https://github.com/ARUNAWRISHE/Arunawrishe")
+        reuse("GITHUB ACCOUNT", "https://github.com/ARUNAWRISHE/new")
 
     st.markdown("<h3 style='text-align:left; color:slateblue; font-weight:bold;'> DO YOU LIKE TO TRY MY GUESSING GAME</h3>", unsafe_allow_html=True)
     if st.button("YES"):
