@@ -87,13 +87,13 @@ def machine_guessing_game():
                 elif st.button("SMALLER"):
                     high = mid - 1
         st.write("Out of attempts! You win!")
-
-if 'test' not in st.session_state:
-    portfolio_page()
-else:
-    if st.session_state['test'] == 1:
-        guessing_game_user()
-    elif st.session_state['test'] == 2:
-        machine_guessing_game()
+for i in range(2):
+    if 'test' not in st.session_state:
+        portfolio_page()
     else:
-        st.write("THANKS FOR VISITING MY PAGE")
+        if st.session_state['test'] == 1:
+            guessing_game_user()
+        elif st.session_state['test'] == 2:
+            machine_guessing_game()
+        else:
+            st.write("THANKS FOR VISITING MY PAGE")
