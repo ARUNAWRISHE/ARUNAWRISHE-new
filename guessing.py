@@ -2,6 +2,7 @@ from PIL import Image
 import random
 import streamlit as st
 
+test=0
 def portfolio_page():
     st.markdown("<h1 style='text-align:center; color:indigo; font-weight:bold;'>PORTFOLIO</h1>", unsafe_allow_html=True)
 
@@ -27,12 +28,12 @@ def portfolio_page():
     st.markdown("<h3 style='text-align:left; color:slateblue; font-weight:bold;'> DO YOU LIKE TO TRY MY GUESSING GAME</h3>", unsafe_allow_html=True)
     if st.button("YES"):
         if st.button("guessing game by you"):
-            st.session_state['test'] = 1
+            test= 1
         elif st.button("guessing game by machine"):
-            st.session_state['test'] = 2
+            test = 2
 
     elif st.button("NO"):
-        st.session_state['test'] = 3
+        test = 3
 
 def guessing_game_user():
     st.markdown("<h3 style='text-align:left; color:slateblue; font-weight:bold;'> CHOOSE A WAY YOU'D LIKE TO PLAY MY GUESSING GAME</h3>", unsafe_allow_html=True)
@@ -91,12 +92,12 @@ def machine_guessing_game():
                 elif st.button("SMALLER"):
                     high = mid - 1
         st.write("Out of attempts! You win!")
-if 'test' not in st.session_state:
+if test ==0:
     portfolio_page()
 else:
-    if st.session_state['test'] == 1:
+    if test == 1:
         guessing_game_user()
-    elif st.session_state['test'] == 2:
+    elif test == 2:
         machine_guessing_game()
     else:
         st.write("THANKS FOR VISITING MY PAGE")
