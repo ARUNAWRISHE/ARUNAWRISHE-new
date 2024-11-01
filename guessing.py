@@ -33,8 +33,8 @@ def portfolio_page():
     st.markdown("<h3 style='text-align:left; color:slateblue; font-weight:bold;'> DO YOU LIKE TO TRY MY GUESSING GAME</h3>", unsafe_allow_html=True)
     if st.button("YES"):
         call()
-
-    elif st.button("NO"):
+    else:
+        st.button("NO")
         test = 3
 
 def guessing_game_user():
