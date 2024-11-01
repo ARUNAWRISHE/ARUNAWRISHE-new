@@ -3,6 +3,11 @@ import random
 import streamlit as st
 
 test=0
+def call():
+    if st.button("guessing game by you"):
+            test= 1
+    elif st.button("guessing game by machine"):
+            test = 2
 def portfolio_page():
     st.markdown("<h1 style='text-align:center; color:indigo; font-weight:bold;'>PORTFOLIO</h1>", unsafe_allow_html=True)
 
@@ -27,10 +32,7 @@ def portfolio_page():
 
     st.markdown("<h3 style='text-align:left; color:slateblue; font-weight:bold;'> DO YOU LIKE TO TRY MY GUESSING GAME</h3>", unsafe_allow_html=True)
     if st.button("YES"):
-        if st.button("guessing game by you"):
-            test= 1
-        elif st.button("guessing game by machine"):
-            test = 2
+        call()
 
     elif st.button("NO"):
         test = 3
