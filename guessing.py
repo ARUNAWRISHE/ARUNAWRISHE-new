@@ -6,8 +6,9 @@ test=0
 def call():
     if st.button("guessing game by you"):
             test= 1
-    elif st.button("guessing game by machine"):
-            test = 2
+    else:
+        st.button("guessing game by machine")
+        test = 2
 def portfolio_page():
     st.markdown("<h1 style='text-align:center; color:indigo; font-weight:bold;'>PORTFOLIO</h1>", unsafe_allow_html=True)
 
