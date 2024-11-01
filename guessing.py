@@ -5,8 +5,16 @@ import streamlit as st
 def portfolio_page():
     st.markdown("<h1 style='text-align:center; color:indigo; font-weight:bold;'>PORTFOLIO</h1>", unsafe_allow_html=True)
     
-    image = Image.open(r"IMG_20241031_113601_647.webp")
+    import streamlit as st
+from PIL import Image
+
+st.markdown("<h1 style='text-align:center; color:indigo; font-weight:bold;'>PORTFOLIO</h1>", unsafe_allow_html=True)
+
+uploaded_file = st.file_uploader("IMG_20241031_113601_647", type="webp")
+if uploaded_file is not None:
+    image = Image.open(uploaded_file)
     image = image.resize((200, 200))
+    st.image(image)
     col1, col2 = st.columns([3, 1])
 
     with col2:
