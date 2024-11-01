@@ -4,31 +4,25 @@ import streamlit as st
 
 def portfolio_page():
     st.markdown("<h1 style='text-align:center; color:indigo; font-weight:bold;'>PORTFOLIO</h1>", unsafe_allow_html=True)
-    
-    import streamlit as st
-from PIL import Image
 
-st.markdown("<h1 style='text-align:center; color:indigo; font-weight:bold;'>PORTFOLIO</h1>", unsafe_allow_html=True)
+    uploaded_file = st.file_uploader("Choose an image", type="webp")
+    if uploaded_file is not None:
+        image = Image.open(uploaded_file)
+        image = image.resize((200, 200))
+        col1, col2 = st.columns([3, 1])
+        
+        with col2:
+            st.image(image)
 
-uploaded_file = st.file_uploader("IMG_20241031_113601_647", type="webp")
-if uploaded_file is not None:
-    image = Image.open(uploaded_file)
-    image = image.resize((200, 200))
-    st.image(image)
-    col1, col2 = st.columns([3, 1])
+        with col1:
+            def reuse(a, b):
+                title, desc = a, b
+                st.markdown(f"<h2 style='text-align:left; color:slateblue; font-weight:bold;'> {title} :- {desc} </h2>", unsafe_allow_html=True)
 
-    with col2:
-        st.image(image)
-
-    with col1:
-        def reuse(a, b):
-            title, desc = a, b
-            st.markdown(f"<h2 style='text-align:left; color:slateblue; font-weight:bold;'> {title} :- {desc} </h2>", unsafe_allow_html=True)
-
-        reuse("NAME", "ARUNAW RISHE M")
-        reuse("PROFESSIONAL", "STUDENT & DEVELOPER")
-        reuse("INTEREST", "JAVA DEVELOPER")
-        reuse("GITHUB ACCOUNT", "https://github.com/ARUNAWRISHE/new")
+            reuse("NAME", "ARUNAW RISHE M")
+            reuse("PROFESSIONAL", "STUDENT & DEVELOPER")
+            reuse("INTEREST", "JAVA DEVELOPER")
+            reuse("GITHUB ACCOUNT", "https://github.com/ARUNAWRISHE/new")
 
     st.markdown("<h3 style='text-align:left; color:slateblue; font-weight:bold;'> DO YOU LIKE TO TRY MY GUESSING GAME</h3>", unsafe_allow_html=True)
     if st.button("YES"):
@@ -52,8 +46,9 @@ def guessing_game_user():
                 n = 5 - (st.session_state['count'] - 1)
                 st.write(f"YOU HAVE {n} CHANCES")
             if guessed_number:
+                
                     guessed_number = int(guessed_number)
-                    if guessed_number > 50 or guessed_number < 0:
+                    if guessed_number > 50 or guessed_number < 1:
                         st.write("INVALID INPUT")
                     elif guessed_number == st.session_state['num_to_be_guessed']:
                         st.write("CONGRATULATIONS, YOU WIN!")
@@ -66,6 +61,7 @@ def guessing_game_user():
                             st.write("THE NUMBER TO BE GUESSED IS GREATER THAN YOUR INPUT NUMBER")
                         else:
                             st.write("THE NUMBER TO BE GUESSED IS SMALLER THAN YOUR INPUT NUMBER")
+                
         else:
             st.write("SORRY, YOU FAILED. The number was:", st.session_state['num_to_be_guessed'])
             if st.button("Play Again"):
@@ -74,23 +70,23 @@ def guessing_game_user():
 def machine_guessing_game():
     st.write("THINK OF A NUMBER BETWEEN 1 AND 50")
     if st.button("START"):
-        num=5
-        while num:
-            num-=1
-            low, high = 1, 50
+        low, high = 1, 50
+        num_attempts = 5
+        while num_attempts > 0:
             mid = (low + high) // 2
             st.write(f"Is your number {mid}?")
             if st.button("YES"):
                 st.write("Yay! The machine guessed your number!")
+                return
             elif st.button("NO"):
-                st.write(f"machine has {num} chance")
+                num_attempts -= 1
+                st.write(f"The machine has {num_attempts} chances left")
                 st.write("Is the number greater or smaller?")
                 if st.button("GREATER"):
                     low = mid + 1
                 elif st.button("SMALLER"):
                     high = mid - 1
-    else:
-        print("Yay!you win!")
+        st.write("Out of attempts! You win!")
 
 if 'test' not in st.session_state:
     portfolio_page()
