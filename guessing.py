@@ -48,7 +48,10 @@ def guessing_game_user():
 def machine_guessing_game():
     st.write("Think of a number between 1 and 50")
     st.write("If you decided click start")
-    if st.checkbox("start"):
+    if 'n' not in st.session_state:
+        st.session_state.n=0
+    if st.checkbox("start",key=f"starts_{st.session_state.n}"):
+        st.session_state.n += 1
         if 'num_attempt' not in st.session_state:
             st.session_state.num_attempt= 5
         if 'low' not in st.session_state:
@@ -62,18 +65,19 @@ def machine_guessing_game():
         st.write(f"Is your number {st.session_state.guess}?")
         if st.session_state.num_attempt >0:
             st.session_state.num_attempt-=1
-            if st.button("Correct!"):
+            if st.checkbox("Correct!"):
                 st.write("Yay! The machine guessed your number!")
                 st.session_state.low = 1
                 st.session_state.high = 50
-
-            elif st.checkbox("Too High",key=f"high_{st.session_state.num_attempt}"):
+            if st.checkbox("Too High",key=f"high_{st.session_state.n}"):
                 st.session_state.high = st.session_state.guess - 1
-                machine_guessing_game()
+                st.write(f"Is your number {st.session_state.low}?")
+                
         
-            elif st.checkbox("Too Low",key=f"low_{st.session_state.num_attempt}"):
+            if st.checkbox("Too Low",key=f"low_{st.session_state.n}"):
                 st.session_state.low = st.session_state.guess + 1
-                machine_guessing_game()
+                st.write(f"Is your number {st.session_state.high}?")
+                
         else:
             st.write("Yay!you win ")
 
