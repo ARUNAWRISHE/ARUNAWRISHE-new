@@ -5,8 +5,8 @@ import streamlit as st
 test=0
 def call():
     if st.button("guessing game by you"):
-            test= 1
-            st.write(test)
+        test= 1
+        st.write(test)
     else:
         st.button("guessing game by machine")
         test = 2
