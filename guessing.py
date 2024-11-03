@@ -85,14 +85,12 @@ def machine_guessing_game():
 if st.session_state['test'] == 0:
     
     st.markdown("<h1 style='text-align:center; color:indigo; font-weight:bold;'>PORTFOLIO</h1>", unsafe_allow_html=True)
-
-    def reuse(a, b):
-        title, desc = a, b
-        st.markdown(f"<h2 style='text-align:left; color:slateblue; font-weight:bold;'> {title} :- {desc} </h2>", unsafe_allow_html=True)
-    reuse("NAME", "ARUNAW RISHE M")
-    reuse("PROFESSIONAL", "STUDENT & DEVELOPER")
-    reuse("INTEREST", "JAVA DEVELOPER")
-    reuse("GITHUB ACCOUNT", "https://github.com/ARUNAWRISHE/new")
+    st.write("NAME: ARUNAW RISHE M")
+    st.write("PROFESSIONAL :", "STUDENT IN KITE")
+    st.write("INTEREST :", "PYTHON DEVELOPER")
+    st.write("GITHUB ACCOUNT :", "https://github.com/ARUNAWRISHE/new")
+    st.write("EMAIL:","arunawrishe@gmail.com")
+    st.write("PHONE NO:","90000 90000")
 
     st.markdown("<h3 style='text-align:left; color:slateblue; font-weight:bold;'> DO YOU LIKE TO TRY MY GUESSING GAME</h3>", unsafe_allow_html=True)
     if st.checkbox("YES"):
