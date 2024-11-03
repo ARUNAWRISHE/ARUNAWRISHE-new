@@ -44,7 +44,7 @@ def guessing_game_user():
     else:
         st.write("SORRY, YOU FAILED. The number was:", st.session_state['num_to_be_guessed'])
         if st.button("Play Again"):
-            guessing_game_user()
+            st.stop()
 def machine_guessing_game():
     
 
