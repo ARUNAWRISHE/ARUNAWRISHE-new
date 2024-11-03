@@ -4,6 +4,23 @@ import random
 
 if 'test' not in st.session_state:
     st.session_state['test']=0
+def calling_machine():
+    st.write(f"THE ATTEMPTS LEFT FOR THE MACHINE ARE {st.session_state.num_attempt}")
+    st.write(f"Is your number {st.session_state.guess}?")
+    
+    button_machine = st.multiselect("Is the guessed value:", ["Correct!", "Too High", "Too Low"], key=f"guess_{st.session_state.n}")
+    
+    if "Correct!" in button_machine:
+        st.write("Yay! The machine guessed your number!")
+        st.session_state.low = 1
+        st.session_state.high = 50
+    elif "Too High" in button_machine:
+        st.session_state.high = st.session_state.guess - 1
+        st.session_state.guess = (st.session_state.low + st.session_state.high) // 2
+        
+    else:
+        st.session_state.low = st.session_state.guess + 1
+        st.session_state.guess = (st.session_state.low + st.session_state.high) // 2
 def call():
     if st.checkbox("GUESS BY USER"):
         st.session_state['test']=1
@@ -53,7 +70,7 @@ def machine_guessing_game():
     if st.checkbox("start",key=f"starts_{st.session_state.n}"):
         st.session_state.n += 1
         if 'num_attempt' not in st.session_state:
-            st.session_state.num_attempt= 5
+            st.session_state.num_attempt= 6
         if 'low' not in st.session_state:
             st.session_state.low = 1
         if 'high' not in st.session_state:
@@ -65,19 +82,8 @@ def machine_guessing_game():
         st.write(f"Is your number {st.session_state.guess}?")
         if st.session_state.num_attempt >0:
             st.session_state.num_attempt-=1
-            if st.checkbox("Correct!"):
-                st.write("Yay! The machine guessed your number!")
-                st.session_state.low = 1
-                st.session_state.high = 50
-            if st.checkbox("Too High",key=f"high_{st.session_state.n}"):
-                st.session_state.high = st.session_state.guess - 1
-                st.write(f"Is your number {st.session_state.low}?")
-                
-        
-            if st.checkbox("Too Low",key=f"low_{st.session_state.n}"):
-                st.session_state.low = st.session_state.guess + 1
-                st.write(f"Is your number {st.session_state.high}?")
-                
+            calling_machine()
+              
         else:
             st.write("Yay!you win ")
 
