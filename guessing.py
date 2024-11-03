@@ -94,11 +94,11 @@ def machine_guessing_game():
 if st.session_state['test'] == 0:
     
     st.markdown("<h1 style='text-align:center; color:indigo; font-weight:bold;'>PORTFOLIO</h1>", unsafe_allow_html=True)
-    image=r"C:\Users\aruna\Downloads\IMG_20241031_113601_647.webp"
+    image = Image.open("C:\\Users\\aruna\\Downloads\\IMG_20241031_113601_647.webp")
     col1, col2 = st.columns([3, 1])
         
     with col2:
-        st.image(image)
+        st.image(image, caption="This is your image!", use_column_width=True)
 
     with col1:
         def reuse(a, b):
