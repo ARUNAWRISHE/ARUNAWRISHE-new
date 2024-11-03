@@ -89,7 +89,7 @@ if st.session_state['test'] == 0:
     def reuse(a, b):
         title, desc = a, b
         st.markdown(f"<h2 style='text-align:left; color:slateblue; font-weight:bold;'> {title} :- {desc} </h2>", unsafe_allow_html=True)
-
+    st.image(r"C:\Users\aruna\OneDrive\Desktop\python\IMG_20241031_113601_647.webp",width=200)
     reuse("NAME", "ARUNAW RISHE M")
     reuse("PROFESSIONAL", "STUDENT & DEVELOPER")
     reuse("INTEREST", "JAVA DEVELOPER")
