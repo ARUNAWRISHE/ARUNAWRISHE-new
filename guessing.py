@@ -77,7 +77,6 @@ def machine_guessing_game():
             st.session_state.high = 50
         if 'guess' not in st.session_state:
             st.session_state.guess = (st.session_state.low + st.session_state.high) // 2
-        st.write(f"THE ATTEMPT LEFT TO MACHINE IS {st.session_state.num_attempt}")
         if st.session_state.num_attempt >0:
             st.session_state.num_attempt-=1
             calling_machine()
