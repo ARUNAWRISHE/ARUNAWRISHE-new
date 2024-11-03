@@ -8,19 +8,25 @@ def calling_machine():
     st.write(f"THE ATTEMPTS LEFT FOR THE MACHINE ARE {st.session_state.num_attempt}")
     st.write(f"Is your number {st.session_state.guess}?")
     
-    button_machine = st.multiselect("Is the guessed value:", ["Correct!", "Too High", "Too Low"], key=f"guess_{st.session_state.n}")
+    button = st.multiselect("Is the guessed value:", ["None","Correct!", "Too High", "Too Low"], key=f"guess_{st.session_state.n}")
     
-    if "Correct!" in button_machine:
+    if "None" in button:
+        st.session_state['test'] == 3
+        
+    elif "Correct!" in button:
         st.write("Yay! The machine guessed your number!")
         st.session_state.low = 1
         st.session_state.high = 50
-    elif "Too High" in button_machine:
+    elif "Too High" in button:
         st.session_state.high = st.session_state.guess - 1
         st.session_state.guess = (st.session_state.low + st.session_state.high) // 2
-        
+        st.experimental_rerun()
     else:
         st.session_state.low = st.session_state.guess + 1
         st.session_state.guess = (st.session_state.low + st.session_state.high) // 2
+
+        
+
 def call():
     if st.checkbox("GUESS BY USER"):
         st.session_state['test']=1
@@ -88,25 +94,21 @@ def machine_guessing_game():
 if st.session_state['test'] == 0:
     
     st.markdown("<h1 style='text-align:center; color:indigo; font-weight:bold;'>PORTFOLIO</h1>", unsafe_allow_html=True)
-
-    uploaded_file = st.file_uploader("Upload an image", type="webp", key="uploader1")
-    if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        image = image.resize((200, 200))
-        col1, col2 = st.columns([3, 1])
+    image="C:\Users\aruna\Downloads\IMG_20241031_113601_647.webp"
+    col1, col2 = st.columns([3, 1])
         
-        with col2:
-            st.image(image)
+    with col2:
+        st.image(image)
 
-        with col1:
-            def reuse(a, b):
-                title, desc = a, b
-                st.markdown(f"<h2 style='text-align:left; color:slateblue; font-weight:bold;'> {title} :- {desc} </h2>", unsafe_allow_html=True)
+    with col1:
+        def reuse(a, b):
+            title, desc = a, b
+            st.markdown(f"<h2 style='text-align:left; color:slateblue; font-weight:bold;'> {title} :- {desc} </h2>", unsafe_allow_html=True)
 
-            reuse("NAME", "ARUNAW RISHE M")
-            reuse("PROFESSIONAL", "STUDENT & DEVELOPER")
-            reuse("INTEREST", "JAVA DEVELOPER")
-            reuse("GITHUB ACCOUNT", "https://github.com/ARUNAWRISHE/new")
+        reuse("NAME", "ARUNAW RISHE M")
+        reuse("PROFESSIONAL", "STUDENT & DEVELOPER")
+        reuse("INTEREST", "JAVA DEVELOPER")
+        reuse("GITHUB ACCOUNT", "https://github.com/ARUNAWRISHE/new")
 
     st.markdown("<h3 style='text-align:left; color:slateblue; font-weight:bold;'> DO YOU LIKE TO TRY MY GUESSING GAME</h3>", unsafe_allow_html=True)
     if st.checkbox("YES"):
