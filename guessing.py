@@ -97,7 +97,7 @@ if st.session_state['test'] == 0:
     col1, col2 = st.columns([3, 1])
         
     with col2:
-        st.image("C:\Users\aruna\OneDrive\Desktop\python\IMG_20241031_113601_647.webp", caption="This is your image!", use_column_width=True)
+        st.image(r"C:\Users\aruna\OneDrive\Desktop\python\IMG_20241031_113601_647.webp", caption="This is your image!", use_column_width=True)
 
     with col1:
         def reuse(a, b):
